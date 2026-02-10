@@ -140,4 +140,11 @@ export const REELS: Reel[] = [
     src: "/assets/slot-machine.mp4",
     category: "Motion",
   },
+  {
+    id: "20",
+    title: "IN Podcast",
+    poster: "https://placehold.co/1920x1080/2b2b2b/white?text=IN+Podcast",
+    src: "/assets/IN-Podcast-Opener.mp4",
+    category: "Motion Graphics",
+  },
 ];
