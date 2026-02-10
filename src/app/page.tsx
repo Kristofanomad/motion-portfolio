@@ -24,7 +24,7 @@ export default function Page() {
           playsInline
           className="absolute inset-0 h-full w-full object-contain z-0 opacity-80"
         >
-          <source src={REELS[0]?.src} type="video/mp4" />
+          <source src="/assets/day-25-katana-sound-on.mp4" type="video/mp4" />
         </video>
         {/* 2. Top Header - RESPONSIVE MARGIN */}
         <div className="relative mt-16 md:mt-32 left-0 w-full flex justify-center z-20 pointer-events-none">
