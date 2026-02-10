@@ -8,6 +8,13 @@ export type Reel = {
 
 export const REELS: Reel[] = [
   {
+    id: "20",
+    title: "IN Podcast",
+    poster: "https://placehold.co/1920x1080/2b2b2b/white?text=IN+Podcast",
+    src: "/assets/IN-Podcast-Opener.mp4",
+    category: "Motion Graphics",
+  },
+  {
     id: "1",
     title: "Day 25 Katana sound on",
     poster: "https://placehold.co/1920x1080/1a1a1a/white?text=Katana",
@@ -139,12 +146,5 @@ export const REELS: Reel[] = [
     poster: "https://placehold.co/1920x1080/1a1a1a/white?text=Slot+Machine",
     src: "/assets/slot-machine.mp4",
     category: "Motion",
-  },
-  {
-    id: "20",
-    title: "IN Podcast",
-    poster: "https://placehold.co/1920x1080/2b2b2b/white?text=IN+Podcast",
-    src: "/assets/IN-Podcast-Opener.mp4",
-    category: "Motion Graphics",
   },
 ];

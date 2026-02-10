@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { MOTION_REELS } from '@/data/motion-assets';
+import { REELS } from '@/data/reels';
 import ReelGrid from '@/components/ReelGrid';
 
 export default function Page() {
@@ -24,7 +24,7 @@ export default function Page() {
           playsInline
           className="absolute inset-0 h-full w-full object-contain z-0 opacity-80"
         >
-          <source src={MOTION_REELS[0]?.src} type="video/mp4" />
+          <source src={REELS[0]?.src} type="video/mp4" />
         </video>
         {/* 2. Top Header - RESPONSIVE MARGIN */}
         <div className="relative mt-16 md:mt-32 left-0 w-full flex justify-center z-20 pointer-events-none">
@@ -67,7 +67,7 @@ export default function Page() {
             Featured Works
           </h2>
         </div>
-        <ReelGrid reels={MOTION_REELS.slice(1)} />
+        <ReelGrid reels={REELS} />
       </section>
     </main>
   );
