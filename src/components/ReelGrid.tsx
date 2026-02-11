@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import ReelItem from "./ReelItem";
-import { MotionReel } from "@/data/motion-assets";
+import { Reel } from "@/data/reels";
 
 interface ReelGridProps {
-    reels: MotionReel[];
+    reels: Reel[];
 }
 
 const containerVariants: Variants = {

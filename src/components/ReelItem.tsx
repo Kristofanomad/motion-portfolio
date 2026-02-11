@@ -1,10 +1,10 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { MotionReel } from "@/data/motion-assets";
+import { Reel } from "@/data/reels";
 import { motion, Variants } from "framer-motion";
 
 interface ReelItemProps {
-    reel: MotionReel;
+    reel: Reel;
     isDimmed?: boolean;
 }
 
@@ -19,6 +19,18 @@ const titleVariants: Variants = {
 export default function ReelItem({ reel, isDimmed = false }: ReelItemProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isHovered, setIsHovered] = useState(false);
+
+    React.useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (isHovered) {
+            video.play().catch(() => { });
+        } else {
+            video.pause();
+            video.currentTime = 0;
+        }
+    }, [isHovered]);
 
     return (
         <motion.div
@@ -38,8 +50,9 @@ export default function ReelItem({ reel, isDimmed = false }: ReelItemProps) {
                     <video
                         ref={videoRef}
                         src={reel.src}
+                        poster={reel.poster}
                         className="w-full h-full object-cover"
-                        autoPlay
+                        preload="none"
                         muted
                         loop
                         playsInline

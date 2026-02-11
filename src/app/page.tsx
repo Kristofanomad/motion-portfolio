@@ -22,6 +22,7 @@ export default function Page() {
           muted
           loop
           playsInline
+          preload="auto"
           className="absolute inset-0 h-full w-full object-contain z-0 opacity-80"
         >
           <source src="/assets/day-25-katana-sound-on.mp4" type="video/mp4" />
