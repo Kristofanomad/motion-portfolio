@@ -18,15 +18,30 @@ const titleVariants: Variants = {
 
 export default function ReelItem({ reel, isDimmed = false }: ReelItemProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
-    const isInView = useInView(videoRef, { once: false, amount: 0.1 });
+    const isInView = useInView(videoRef, { once: false, amount: 0.2 });
 
     useEffect(() => {
         if (!videoRef.current) return;
 
+        // Fallback if IntersectionObserver is missing/blocked
+        if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
+            return;
+        }
+
         if (isInView) {
-            videoRef.current.play().catch(e => console.log("Video playback prevented:", e));
+            const promise = videoRef.current.play();
+            if (promise !== undefined) {
+                promise.catch((error) => {
+                    if (error.name !== 'AbortError') {
+                        console.error("Video play error:", error);
+                    }
+                });
+            }
         } else {
-            videoRef.current.pause();
+            // Only pause if the readyState is sufficient, avoiding interrupting play promises too roughly
+            if (videoRef.current.readyState >= 2) {
+                videoRef.current.pause();
+            }
         }
     }, [isInView]);
 
