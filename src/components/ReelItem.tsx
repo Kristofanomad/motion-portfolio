@@ -29,6 +29,7 @@ export default function ReelItem({ reel, isDimmed = false }: ReelItemProps) {
         }
 
         if (isInView) {
+            videoRef.current.load();
             const promise = videoRef.current.play();
             if (promise !== undefined) {
                 promise.catch((error) => {
@@ -65,6 +66,7 @@ export default function ReelItem({ reel, isDimmed = false }: ReelItemProps) {
                         poster={reel.poster}
                         className="w-full h-full object-cover"
                         preload="none"
+                        autoPlay
                         muted
                         loop
                         playsInline
