@@ -1,7 +1,7 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Reel } from "@/data/reels";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, useInView } from "framer-motion";
 
 interface ReelItemProps {
     reel: Reel;
@@ -18,6 +18,17 @@ const titleVariants: Variants = {
 
 export default function ReelItem({ reel, isDimmed = false }: ReelItemProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
+    const isInView = useInView(videoRef, { once: false, amount: 0.1 });
+
+    useEffect(() => {
+        if (!videoRef.current) return;
+
+        if (isInView) {
+            videoRef.current.play().catch(e => console.log("Video playback prevented:", e));
+        } else {
+            videoRef.current.pause();
+        }
+    }, [isInView]);
 
 
     return (
@@ -38,7 +49,7 @@ export default function ReelItem({ reel, isDimmed = false }: ReelItemProps) {
                         src={reel.src}
                         poster={reel.poster}
                         className="w-full h-full object-cover"
-                        autoPlay
+                        preload="none"
                         muted
                         loop
                         playsInline
